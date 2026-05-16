@@ -56,10 +56,7 @@ export function ServiceImage({
       whileHover={{ y: -5, scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       transition={{ type: "spring", stiffness: 240, damping: 22 }}
-      className={
-        "group relative rounded-[20px] overflow-hidden shadow-[0_8px_28px_rgba(60,60,90,0.10)] bg-secondary cursor-pointer " +
-        className
-      }
+      className="group relative h-full rounded-[20px] overflow-hidden shadow-[0_8px_28px_rgba(60,60,90,0.10)] bg-secondary cursor-pointer"
     >
       {/* Skeleton loader */}
       {!loaded && (
@@ -144,12 +141,12 @@ export function ServiceImage({
     return (
       <Link
         to={to}
-        className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-[20px]"
+        className={"block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-[20px] " + className}
       >
         {Inner}
       </Link>
     );
   }
 
-  return Inner;
+  return <div className={className}>{Inner}</div>;
 }
