@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>easyDUD</title>
+    <script>
+      // Single-page app redirect for GitHub Pages.
+      // When GitHub Pages serves a 404, this script saves the
+      // requested path and redirects to index.html, which then
+      // restores the URL via sessionStorage.
+      var base = "/website--easyDUD/";
+      var path = location.pathname.replace(base, "/");
+      sessionStorage.setItem("spa-redirect", base + path.slice(1) + location.search + location.hash);
+      location.replace(base);
+    </script>
+  </head>
+  <body></body>
+</html>
