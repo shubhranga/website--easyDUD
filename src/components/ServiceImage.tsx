@@ -12,7 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-/* Map label strings to icons so each card has a matching icon */
+// FIX: "Bike Pooling" capitalised P to match CATEGORY_META label after fix in service-images.ts
 const LABEL_ICONS: Record<string, LucideIcon> = {
   Taxi: CarTaxiFront,
   Bus: Bus,
@@ -83,7 +83,7 @@ export function ServiceImage({
         />
       </AnimatePresence>
 
-      {/* Stronger gradient so label is always legible */}
+      {/* Strong gradient so label is always readable */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/0 transition-opacity duration-300 group-hover:from-black/85" />
 
       {overlay}
@@ -91,7 +91,6 @@ export function ServiceImage({
       {/* Always-visible label at the bottom */}
       {label && (
         <div className="absolute bottom-0 left-0 right-0 p-3 flex items-end justify-between">
-          {/* Left: icon + label name */}
           <div className="flex items-center gap-1.5">
             {Icon && (
               <span className="flex items-center justify-center h-7 w-7 rounded-full bg-white/20 backdrop-blur-sm ring-1 ring-white/30">
@@ -103,7 +102,7 @@ export function ServiceImage({
             </span>
           </div>
 
-          {/* Right: "Go →" arrow, slides in on hover */}
+          {/* Arrow slides in on hover */}
           {to && (
             <motion.span
               initial={false}
@@ -115,7 +114,7 @@ export function ServiceImage({
         </div>
       )}
 
-      {/* Subtle top-right dot indicator showing image count */}
+      {/* Dot indicators for image rotation */}
       {images.length > 1 && (
         <div className="absolute top-3 right-3 flex gap-1">
           {images.map((_, i) => (
