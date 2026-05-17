@@ -6,9 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
-  useLocation,
 } from "@tanstack/react-router";
-import { AnimatePresence } from "framer-motion";
 
 import appCss from "../styles.css?url";
 
@@ -110,25 +108,12 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-/**
- * AnimatedOutlet keys AnimatePresence on the pathname so the outgoing
- * page plays its exit animation before the incoming page enters.
- */
-function AnimatedOutlet() {
-  const { pathname } = useLocation();
-  return (
-    <AnimatePresence mode="wait" initial={false}>
-      <Outlet key={pathname} />
-    </AnimatePresence>
-  );
-}
-
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AnimatedOutlet />
+      <Outlet />
     </QueryClientProvider>
   );
 }

@@ -5,6 +5,7 @@ import { ChevronRight, MapPin, CircleDot } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { AnimatedHeadline } from "@/components/AnimatedHeadline";
 import { FloatingSidebar, type BookingCategory } from "@/components/FloatingSidebar";
+import { PageTransition } from "@/components/PageTransition";
 import {
   OurServicesSection,
   WhatWeOfferSection,
@@ -53,9 +54,10 @@ function Index() {
   const [dropoff, setDropoff] = useState("");
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <FloatingSidebar active={category} onChange={setCategory} />
+    <PageTransition>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <FloatingSidebar active={category} onChange={setCategory} />
 
       <main className="mx-auto max-w-[1320px] px-6 pt-10 pb-16">
         {/* Headline row */}
@@ -216,5 +218,6 @@ function Index() {
         <QrDownloadSection />
       </main>
     </div>
+    </PageTransition>
   );
 }

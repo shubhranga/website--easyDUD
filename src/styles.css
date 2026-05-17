@@ -140,5 +140,7 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    /* Smooth background-color transition when navigating between pages */
+    transition: background-color 0.35s ease;
   }
 }

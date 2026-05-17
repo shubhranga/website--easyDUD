@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
+import { PageTransition } from "@/components/PageTransition";
 import { SearchHero } from "@/components/hotels/SearchHero";
 import { PopularDestinations } from "@/components/hotels/PopularDestinations";
 import { FilterSidebar, type Filters } from "@/components/hotels/FilterSidebar";
@@ -69,6 +70,7 @@ function HotelsPage() {
   };
 
   return (
+    <PageTransition>
     <div style={{ minHeight: "100vh", background: "#fafbfc", fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
@@ -247,5 +249,6 @@ function HotelsPage() {
         }
       `}</style>
     </div>
+    </PageTransition>
   );
 }
