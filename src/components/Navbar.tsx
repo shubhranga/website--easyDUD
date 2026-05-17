@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Globe } from "lucide-react";
-import logo from "@/assets/dud-logo.png";
+import logo from "@/assets/easydud-logo.png";
 
 const navItems = [
   { label: "Home", to: "/" },
@@ -15,16 +15,21 @@ export function Navbar() {
     <header className="w-full px-6 pt-5">
       <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4">
         {/* Logo + wordmark */}
-        <Link to="/" className="flex items-center gap-2 shrink-0">
+        <Link to="/" className="flex items-center gap-1.5 shrink-0 group">
           <img
             src={logo}
-            alt="DUD"
-            width={40}
-            height={40}
-            className="h-10 w-10 object-contain"
+            alt="easyDUD"
+            width={44}
+            height={44}
+            className="h-11 w-11 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-105"
           />
-          <span className="font-black text-xl tracking-tight text-foreground/90 hidden md:inline">
-            DUD
+          <span className="hidden md:flex flex-col leading-none">
+            <span className="font-black text-[15px] tracking-tight text-foreground/90">
+              easy<span className="text-[#e07b2a]">DUD</span>
+            </span>
+            <span className="text-[9px] font-medium tracking-widest uppercase text-foreground/40">
+              Travel
+            </span>
           </span>
         </Link>
 

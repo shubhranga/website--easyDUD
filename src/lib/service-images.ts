@@ -33,9 +33,9 @@ export const SERVICE_IMAGES: Record<ServiceCategory, string[]> = {
     "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1200&q=80",
   ],
   auto: [
+    "https://images.unsplash.com/photo-1622977266039-be2202b48b21?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1597001994070-e73ba5ff1b26?auto=format&fit=crop&w=1200&q=80",
     "https://images.unsplash.com/photo-1599054735388-bcb07bdd3574?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1582547094329-bef03cb0e2d2?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=1200&q=80",
   ],
 };
 

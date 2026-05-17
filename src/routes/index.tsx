@@ -21,7 +21,7 @@ const HERO_IMAGES: Record<BookingCategory, string> = {
   taxi: "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1400&q=80",
   bus: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1400&q=80",
   flight: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=80",
-  auto: "https://images.unsplash.com/photo-1583249598754-b7a2f59651fa?auto=format&fit=crop&w=1400&q=80",
+  auto: "https://images.unsplash.com/photo-1622977266039-be2202b48b21?auto=format&fit=crop&w=1400&q=80",
   hotel: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80",
   bike: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1400&q=80",
 };
