@@ -1,15 +1,14 @@
-import { useEffect } from "react";
-import { useLocation } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
-/**
- * Scrolls the window to the top whenever the pathname changes.
- * Mount this once inside any layout or root component.
- */
-export function useScrollToTop() {
-  const { pathname } = useLocation();
+export function useScrollPosition(threshold = 60) {
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    // Use instant scroll so it doesn't fight the page-enter animation
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, [pathname]);
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [threshold]);
+
+  return scrolled;
 }
