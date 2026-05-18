@@ -10,17 +10,27 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TaxiRouteImport } from './routes/taxi'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as PlansPricingRouteImport } from './routes/plans-pricing'
 import { Route as HotelsRouteImport } from './routes/hotels'
 import { Route as FlightsRouteImport } from './routes/flights'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CabRouteImport } from './routes/cab'
 import { Route as BusRouteImport } from './routes/bus'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BikePoolingRouteImport } from './routes/bike-pooling'
 import { Route as AutoRouteImport } from './routes/auto'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const TaxiRoute = TaxiRouteImport.update({
   id: '/taxi',
   path: '/taxi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlansPricingRoute = PlansPricingRouteImport.update({
@@ -38,9 +48,24 @@ const FlightsRoute = FlightsRouteImport.update({
   path: '/flights',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CabRoute = CabRouteImport.update({
+  id: '/cab',
+  path: '/cab',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BusRoute = BusRouteImport.update({
   id: '/bus',
   path: '/bus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BikePoolingRoute = BikePoolingRouteImport.update({
@@ -53,6 +78,11 @@ const AutoRoute = AutoRouteImport.update({
   path: '/auto',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -61,76 +91,111 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auto': typeof AutoRoute
   '/bike-pooling': typeof BikePoolingRoute
+  '/blog': typeof BlogRoute
   '/bus': typeof BusRoute
+  '/cab': typeof CabRoute
+  '/contact': typeof ContactRoute
   '/flights': typeof FlightsRoute
   '/hotels': typeof HotelsRoute
   '/plans-pricing': typeof PlansPricingRoute
+  '/services': typeof ServicesRoute
   '/taxi': typeof TaxiRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auto': typeof AutoRoute
   '/bike-pooling': typeof BikePoolingRoute
+  '/blog': typeof BlogRoute
   '/bus': typeof BusRoute
+  '/cab': typeof CabRoute
+  '/contact': typeof ContactRoute
   '/flights': typeof FlightsRoute
   '/hotels': typeof HotelsRoute
   '/plans-pricing': typeof PlansPricingRoute
+  '/services': typeof ServicesRoute
   '/taxi': typeof TaxiRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auto': typeof AutoRoute
   '/bike-pooling': typeof BikePoolingRoute
+  '/blog': typeof BlogRoute
   '/bus': typeof BusRoute
+  '/cab': typeof CabRoute
+  '/contact': typeof ContactRoute
   '/flights': typeof FlightsRoute
   '/hotels': typeof HotelsRoute
   '/plans-pricing': typeof PlansPricingRoute
+  '/services': typeof ServicesRoute
   '/taxi': typeof TaxiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/auto'
     | '/bike-pooling'
+    | '/blog'
     | '/bus'
+    | '/cab'
+    | '/contact'
     | '/flights'
     | '/hotels'
     | '/plans-pricing'
+    | '/services'
     | '/taxi'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/auto'
     | '/bike-pooling'
+    | '/blog'
     | '/bus'
+    | '/cab'
+    | '/contact'
     | '/flights'
     | '/hotels'
     | '/plans-pricing'
+    | '/services'
     | '/taxi'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/auto'
     | '/bike-pooling'
+    | '/blog'
     | '/bus'
+    | '/cab'
+    | '/contact'
     | '/flights'
     | '/hotels'
     | '/plans-pricing'
+    | '/services'
     | '/taxi'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AutoRoute: typeof AutoRoute
   BikePoolingRoute: typeof BikePoolingRoute
+  BlogRoute: typeof BlogRoute
   BusRoute: typeof BusRoute
+  CabRoute: typeof CabRoute
+  ContactRoute: typeof ContactRoute
   FlightsRoute: typeof FlightsRoute
   HotelsRoute: typeof HotelsRoute
   PlansPricingRoute: typeof PlansPricingRoute
+  ServicesRoute: typeof ServicesRoute
   TaxiRoute: typeof TaxiRoute
 }
 
@@ -141,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/taxi'
       fullPath: '/taxi'
       preLoaderRoute: typeof TaxiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/plans-pricing': {
@@ -164,11 +236,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FlightsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cab': {
+      id: '/cab'
+      path: '/cab'
+      fullPath: '/cab'
+      preLoaderRoute: typeof CabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bus': {
       id: '/bus'
       path: '/bus'
       fullPath: '/bus'
       preLoaderRoute: typeof BusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bike-pooling': {
@@ -185,6 +278,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AutoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -197,12 +297,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AutoRoute: AutoRoute,
   BikePoolingRoute: BikePoolingRoute,
+  BlogRoute: BlogRoute,
   BusRoute: BusRoute,
+  CabRoute: CabRoute,
+  ContactRoute: ContactRoute,
   FlightsRoute: FlightsRoute,
   HotelsRoute: HotelsRoute,
   PlansPricingRoute: PlansPricingRoute,
+  ServicesRoute: ServicesRoute,
   TaxiRoute: TaxiRoute,
 }
 export const routeTree = rootRouteImport
