@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { useScrollToTop } from "@/hooks/use-scroll-to-top";
+import { useScrollPosition } from "@/hooks/use-scroll-position";
 
 interface PageTransitionProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ interface PageTransitionProps {
  * resets the scroll position whenever the route changes.
  */
 export function PageTransition({ children, className = "" }: PageTransitionProps) {
-  useScrollToTop();
+ useScrollPosition();
 
   return (
     <motion.div
