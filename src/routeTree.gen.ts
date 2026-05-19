@@ -22,6 +22,12 @@ import { Route as BikePoolingRouteImport } from './routes/bike-pooling'
 import { Route as AutoRouteImport } from './routes/auto'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BusSeatsRouteImport } from './routes/bus.seats'
+import { Route as BusResultsRouteImport } from './routes/bus.results'
+import { Route as BusLoginRouteImport } from './routes/bus.login'
+import { Route as BusConfirmationRouteImport } from './routes/bus.confirmation'
+import { Route as BusCheckoutRouteImport } from './routes/bus.checkout'
+import { Route as BusAccountRouteImport } from './routes/bus.account'
 
 const TaxiRoute = TaxiRouteImport.update({
   id: '/taxi',
@@ -88,6 +94,36 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BusSeatsRoute = BusSeatsRouteImport.update({
+  id: '/seats',
+  path: '/seats',
+  getParentRoute: () => BusRoute,
+} as any)
+const BusResultsRoute = BusResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => BusRoute,
+} as any)
+const BusLoginRoute = BusLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => BusRoute,
+} as any)
+const BusConfirmationRoute = BusConfirmationRouteImport.update({
+  id: '/confirmation',
+  path: '/confirmation',
+  getParentRoute: () => BusRoute,
+} as any)
+const BusCheckoutRoute = BusCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => BusRoute,
+} as any)
+const BusAccountRoute = BusAccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => BusRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -95,7 +131,7 @@ export interface FileRoutesByFullPath {
   '/auto': typeof AutoRoute
   '/bike-pooling': typeof BikePoolingRoute
   '/blog': typeof BlogRoute
-  '/bus': typeof BusRoute
+  '/bus': typeof BusRouteWithChildren
   '/cab': typeof CabRoute
   '/contact': typeof ContactRoute
   '/flights': typeof FlightsRoute
@@ -103,6 +139,12 @@ export interface FileRoutesByFullPath {
   '/plans-pricing': typeof PlansPricingRoute
   '/services': typeof ServicesRoute
   '/taxi': typeof TaxiRoute
+  '/bus/account': typeof BusAccountRoute
+  '/bus/checkout': typeof BusCheckoutRoute
+  '/bus/confirmation': typeof BusConfirmationRoute
+  '/bus/login': typeof BusLoginRoute
+  '/bus/results': typeof BusResultsRoute
+  '/bus/seats': typeof BusSeatsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,7 +152,7 @@ export interface FileRoutesByTo {
   '/auto': typeof AutoRoute
   '/bike-pooling': typeof BikePoolingRoute
   '/blog': typeof BlogRoute
-  '/bus': typeof BusRoute
+  '/bus': typeof BusRouteWithChildren
   '/cab': typeof CabRoute
   '/contact': typeof ContactRoute
   '/flights': typeof FlightsRoute
@@ -118,6 +160,12 @@ export interface FileRoutesByTo {
   '/plans-pricing': typeof PlansPricingRoute
   '/services': typeof ServicesRoute
   '/taxi': typeof TaxiRoute
+  '/bus/account': typeof BusAccountRoute
+  '/bus/checkout': typeof BusCheckoutRoute
+  '/bus/confirmation': typeof BusConfirmationRoute
+  '/bus/login': typeof BusLoginRoute
+  '/bus/results': typeof BusResultsRoute
+  '/bus/seats': typeof BusSeatsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -126,7 +174,7 @@ export interface FileRoutesById {
   '/auto': typeof AutoRoute
   '/bike-pooling': typeof BikePoolingRoute
   '/blog': typeof BlogRoute
-  '/bus': typeof BusRoute
+  '/bus': typeof BusRouteWithChildren
   '/cab': typeof CabRoute
   '/contact': typeof ContactRoute
   '/flights': typeof FlightsRoute
@@ -134,6 +182,12 @@ export interface FileRoutesById {
   '/plans-pricing': typeof PlansPricingRoute
   '/services': typeof ServicesRoute
   '/taxi': typeof TaxiRoute
+  '/bus/account': typeof BusAccountRoute
+  '/bus/checkout': typeof BusCheckoutRoute
+  '/bus/confirmation': typeof BusConfirmationRoute
+  '/bus/login': typeof BusLoginRoute
+  '/bus/results': typeof BusResultsRoute
+  '/bus/seats': typeof BusSeatsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +205,12 @@ export interface FileRouteTypes {
     | '/plans-pricing'
     | '/services'
     | '/taxi'
+    | '/bus/account'
+    | '/bus/checkout'
+    | '/bus/confirmation'
+    | '/bus/login'
+    | '/bus/results'
+    | '/bus/seats'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +226,12 @@ export interface FileRouteTypes {
     | '/plans-pricing'
     | '/services'
     | '/taxi'
+    | '/bus/account'
+    | '/bus/checkout'
+    | '/bus/confirmation'
+    | '/bus/login'
+    | '/bus/results'
+    | '/bus/seats'
   id:
     | '__root__'
     | '/'
@@ -181,6 +247,12 @@ export interface FileRouteTypes {
     | '/plans-pricing'
     | '/services'
     | '/taxi'
+    | '/bus/account'
+    | '/bus/checkout'
+    | '/bus/confirmation'
+    | '/bus/login'
+    | '/bus/results'
+    | '/bus/seats'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -189,7 +261,7 @@ export interface RootRouteChildren {
   AutoRoute: typeof AutoRoute
   BikePoolingRoute: typeof BikePoolingRoute
   BlogRoute: typeof BlogRoute
-  BusRoute: typeof BusRoute
+  BusRoute: typeof BusRouteWithChildren
   CabRoute: typeof CabRoute
   ContactRoute: typeof ContactRoute
   FlightsRoute: typeof FlightsRoute
@@ -292,8 +364,70 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bus/seats': {
+      id: '/bus/seats'
+      path: '/seats'
+      fullPath: '/bus/seats'
+      preLoaderRoute: typeof BusSeatsRouteImport
+      parentRoute: typeof BusRoute
+    }
+    '/bus/results': {
+      id: '/bus/results'
+      path: '/results'
+      fullPath: '/bus/results'
+      preLoaderRoute: typeof BusResultsRouteImport
+      parentRoute: typeof BusRoute
+    }
+    '/bus/login': {
+      id: '/bus/login'
+      path: '/login'
+      fullPath: '/bus/login'
+      preLoaderRoute: typeof BusLoginRouteImport
+      parentRoute: typeof BusRoute
+    }
+    '/bus/confirmation': {
+      id: '/bus/confirmation'
+      path: '/confirmation'
+      fullPath: '/bus/confirmation'
+      preLoaderRoute: typeof BusConfirmationRouteImport
+      parentRoute: typeof BusRoute
+    }
+    '/bus/checkout': {
+      id: '/bus/checkout'
+      path: '/checkout'
+      fullPath: '/bus/checkout'
+      preLoaderRoute: typeof BusCheckoutRouteImport
+      parentRoute: typeof BusRoute
+    }
+    '/bus/account': {
+      id: '/bus/account'
+      path: '/account'
+      fullPath: '/bus/account'
+      preLoaderRoute: typeof BusAccountRouteImport
+      parentRoute: typeof BusRoute
+    }
   }
 }
+
+interface BusRouteChildren {
+  BusAccountRoute: typeof BusAccountRoute
+  BusCheckoutRoute: typeof BusCheckoutRoute
+  BusConfirmationRoute: typeof BusConfirmationRoute
+  BusLoginRoute: typeof BusLoginRoute
+  BusResultsRoute: typeof BusResultsRoute
+  BusSeatsRoute: typeof BusSeatsRoute
+}
+
+const BusRouteChildren: BusRouteChildren = {
+  BusAccountRoute: BusAccountRoute,
+  BusCheckoutRoute: BusCheckoutRoute,
+  BusConfirmationRoute: BusConfirmationRoute,
+  BusLoginRoute: BusLoginRoute,
+  BusResultsRoute: BusResultsRoute,
+  BusSeatsRoute: BusSeatsRoute,
+}
+
+const BusRouteWithChildren = BusRoute._addFileChildren(BusRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -301,7 +435,7 @@ const rootRouteChildren: RootRouteChildren = {
   AutoRoute: AutoRoute,
   BikePoolingRoute: BikePoolingRoute,
   BlogRoute: BlogRoute,
-  BusRoute: BusRoute,
+  BusRoute: BusRouteWithChildren,
   CabRoute: CabRoute,
   ContactRoute: ContactRoute,
   FlightsRoute: FlightsRoute,
@@ -313,3 +447,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
