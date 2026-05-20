@@ -193,4 +193,21 @@ export const INSPIRATION: InspirationCard[] = [
     price: "from ₹2,900",
   },
   {
-    emoji: "
+    emoji: "🏔️",
+    title: "Hill station escape",
+    subtitle: "Manali · Shimla · 3 nights",
+    price: "from ₹4,200",
+  },
+  {
+    emoji: "🏛️",
+    title: "Heritage trail",
+    subtitle: "Jaipur · Agra · 4 nights",
+    price: "from ₹5,500",
+  },
+  {
+    emoji: "🌴",
+    title: "Andaman adventure",
+    subtitle: "Port Blair · Havelock · 5 nights",
+    price: "from ₹12,000",
+  },
+];
