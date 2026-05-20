@@ -1,14 +1,10 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { useScrollPosition } from "@/hooks/use-scroll-position";
+import { useScrollPosition } from "@/hooks/use-scroll-to-top";
 interface PageTransitionProps {
   children: ReactNode;
   className?: string;
 }
-/**
- * Wraps a page in a smooth fade + upward-slide entrance animation and
- * resets the scroll position whenever the route changes.
- */
 export function PageTransition({ children, className = "" }: PageTransitionProps) {
   useScrollPosition();
   return (
