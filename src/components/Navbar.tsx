@@ -10,9 +10,9 @@ const navItems = [
   { label: "Contact Us", to: "/" },
 ] as const;
 
-export function Navbar() {
+export function Navbar({ overlay = false }: { overlay?: boolean }) {
   return (
-    <header className="w-full px-6 pt-5">
+    <header className={`w-full px-6 pt-5${overlay ? " absolute top-0 left-0 right-0 z-20" : ""}`}>
       <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-4">
         {/* Logo + wordmark */}
         <Link to="/" className="flex items-center gap-1.5 shrink-0 group">
