@@ -1,1 +1,0 @@
-import{j as o}from"./index-9Od6-I5m.js";import{C as t}from"./CategoryPage-BqTQ63hj.js";import"./Navbar-E0tY5b-6.js";import"./service-images-D_WShyag.js";import"./proxy-B5oLvOFR.js";const i=()=>o.jsx(t,{category:"auto"});export{i as component};
