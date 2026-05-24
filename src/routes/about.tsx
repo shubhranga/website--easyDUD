@@ -6,18 +6,54 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — DUD Travel" },
-      { name: "description", content: "The team and story behind DUD Travel." },
+      { title: "About Us — easyDUD" },
+      { name: "description", content: "The team and story behind easyDUD." },
     ],
   }),
   component: AboutPage,
 });
 
 const TEAM = [
-  { name: "Ananya Rao", role: "Founder & CEO", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" },
-  { name: "Vikram Mehta", role: "Head of Product", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" },
-  { name: "Sara Kapoor", role: "Design Lead", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" },
-  { name: "Rohan Singh", role: "Engineering", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" },
+  { 
+    name: "Shekhar Pratap Singh Raghav", 
+    role: "Founder, MD & CEO", 
+    img: "/src/assets/ceo.jpg" 
+  },
+  { 
+    name: "Sanjeev Sharma", 
+    role: "Executive Director", 
+    img: "/src/assets/executiveDirector.jpg" 
+  },
+  { 
+    name: "Chetan", 
+    role: "Executive Co-Founder & Marketing", 
+    img: "/src/assets/CFO.jpg" 
+  },
+  { 
+    name: "Rohit Srivastava", 
+    role: "Executive Manager", 
+    img: "/src/assets/EM.jpg" 
+  },
+  { 
+    name: "Suraj", 
+    role: "Business Development Manager", 
+    img: "/src/assets/BDM.jpg" 
+  },
+  { 
+    name: "Tanya", 
+    role: "Company Relationshiop Manager", 
+    img: "/src/assets/CRM.jpg" 
+  },
+  { 
+    name: "Diksha Kholiya", 
+    role: "Company Process Manager & Admin", 
+    img: "/src/assets/Diksha.jpg" 
+  },
+  { 
+    name: "Shivansh Yadav & Lalit Kaira", 
+    role: "Management of Designing Development & Editing", 
+    img: ["/src/assets/designer 2.jpg", "/src/assets/designer1.jpg"] 
+  }
 ];
 
 function AboutPage() {
@@ -41,29 +77,57 @@ function AboutPage() {
             We make travel <span className="italic" style={{ color: "#E8A87C" }}>effortless</span>
           </motion.h1>
           <p className="mt-4 max-w-xl text-white/85">
-            DUD Travel is on a mission to remove the friction from every trip — from your morning cab to a transcontinental flight.
+            easyDUD is on a mission to remove the friction from every trip — from your morning cab to a transcontinental flight.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1320px] px-6 py-16">
-        <h2 className="text-3xl font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
+      <section className="mx-auto max-w-[1320px] px-6 py-20 bg-[#F8FAFC]">
+        <h2 className="text-3xl font-bold text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
           Meet the team
         </h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {TEAM.map((m, i) => (
             <motion.div
               key={m.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.06)]"
+              transition={{ delay: i * 0.1 }}
+              className="group relative bg-white border border-slate-100 p-8 shadow-sm flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              style={{
+                borderRadius: "24px 24px 24px 0",
+                clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)",
+              }}
             >
-              <img src={m.img} alt={m.name} className="h-64 w-full object-cover" />
-              <div className="p-4">
-                <div className="font-semibold">{m.name}</div>
-                <div className="text-sm text-foreground/60">{m.role}</div>
+              <div className="mb-12">
+                <h3 className="text-xl font-bold text-slate-900">{m.name}</h3>
+                <p className="text-sm font-medium text-slate-500 mt-1 uppercase tracking-wider">{m.role}</p>
+              </div>
+              
+              <div className="relative mt-auto mx-auto w-full aspect-square max-w-[240px]">
+                {/* Background decorative shape */}
+                <div className="absolute inset-0 bg-slate-50 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-slate-100/50 rounded-2xl transform -rotate-3 group-hover:-rotate-2 transition-transform duration-500" />
+                
+                {Array.isArray(m.img) ? (
+                  <div className="relative z-10 w-full h-full flex gap-1 overflow-hidden rounded-2xl shadow-lg">
+                    {m.img.map((src, idx) => (
+                      <img 
+                        key={idx}
+                        src={src} 
+                        alt={m.name} 
+                        className="w-1/2 h-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" 
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <img 
+                    src={m.img} 
+                    alt={m.name} 
+                    className="relative z-10 w-full h-full object-cover object-center rounded-2xl shadow-lg grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" 
+                  />
+                )}
               </div>
             </motion.div>
           ))}

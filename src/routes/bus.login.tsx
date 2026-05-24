@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { BusGoLayout } from "@/components/busgo/Shell";
 import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable";
 import { toast } from "sonner";
 import { Bus } from "lucide-react";
 
@@ -41,8 +42,8 @@ function LoginPage() {
   };
 
   const google = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: window.location.origin + "/bus/account" } });
-    if (error) toast.error("Google sign-in failed");
+    const res = await lovable.auth.signInWithOAuth("google", { redirect_uri: window.location.origin + "/bus/account" });
+    if (res.error) toast.error("Google sign-in failed");
   };
 
   return (

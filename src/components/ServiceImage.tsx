@@ -1,7 +1,7 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { useRotatingIndex } from "@/hooks/use-rotating-index";
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import {
   CarTaxiFront,
   Bus,
@@ -47,7 +47,6 @@ export function ServiceImage({
   eager = false,
 }: ServiceImageProps) {
   const index = useRotatingIndex(images.length, intervalMs);
-  const [loaded, setLoaded] = useState(false);
 
   const Icon = label ? LABEL_ICONS[label] : undefined;
 
@@ -66,30 +65,14 @@ export function ServiceImage({
         background: "#0d1b2e",
       }}
     >
-      {/* Skeleton */}
-      {!loaded && (
-        <div
-          className="absolute inset-0 animate-pulse"
-          style={{
-            background:
-              "linear-gradient(135deg, #112240 0%, #0a1628 100%)",
-          }}
-        />
-      )}
-
-      {/* Rotating image */}
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={images[index]}
-          src={images[index]}
-          alt={alt}
-          loading={eager ? "eager" : "lazy"}
+      {/* Rotating images — stacked via CSS, crossfade handled by opacity transition */}
+      {images.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt={i === 0 ? alt : ""}
+          loading={eager || i === 0 ? "eager" : "lazy"}
           decoding="async"
-          onLoad={() => setLoaded(true)}
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{
             position: "absolute",
             inset: 0,
@@ -97,9 +80,11 @@ export function ServiceImage({
             height: "100%",
             objectFit: "cover",
             objectPosition: "center",
+            opacity: i === index ? 1 : 0,
+            transition: "opacity 0.8s ease-in-out",
           }}
         />
-      </AnimatePresence>
+      ))}
 
       {/* Gradient overlay — deepens on hover */}
       <div
@@ -111,7 +96,7 @@ export function ServiceImage({
       />
 
       {/* Amber glow edge on hover */}
-      <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
+      <div className="absolute inset-0 rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] pointer-events-none"
         style={{
           boxShadow: "inset 0 0 0 1.5px rgba(251,191,36,0.35)",
         }}
@@ -174,7 +159,7 @@ export function ServiceImage({
     return (
       <Link
         to={to}
-        style={{ display: "block" }}
+        style={{ display: "block", height: "100%" }}
         className="focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 rounded-[20px]"
       >
         {Inner}

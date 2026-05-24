@@ -4,8 +4,8 @@ import { Navbar } from "@/components/Navbar";
 export const Route = createFileRoute("/plans-pricing")({
   head: () => ({
     meta: [
-      { title: "Plans & Pricing — DUD Travel" },
-      { name: "description", content: "DUD Travel plans and pricing." },
+      { title: "Plans & Pricing — easyDUD" },
+      { name: "description", content: "easyDUD plans and pricing." },
     ],
   }),
   component: PlansPricing,

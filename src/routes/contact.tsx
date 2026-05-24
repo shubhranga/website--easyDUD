@@ -9,8 +9,8 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — DUD Travel" },
-      { name: "description", content: "Get in touch with the DUD Travel team." },
+      { title: "Contact — easyDUD" },
+      { name: "description", content: "Get in touch with the easyDUD team." },
     ],
   }),
   component: ContactPage,

@@ -12,8 +12,13 @@ import {
   PricingSection,
   QrDownloadSection,
 } from "@/components/HomeSections";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import { SectionDotNav } from "@/components/SectionDotNav";
 
 export const Route = createFileRoute("/")({ component: Index });
+
+/** Ordered list of every section id rendered on this page. */
+const SECTION_IDS = ["hero", "services", "offers", "pricing", "download"];
 
 type HeroTab = "flights" | "cab" | "bike" | "hotels";
 
@@ -60,13 +65,17 @@ function Index() {
   const [destination, setDestination] = useState("");
   const data = HERO[tab];
 
+  // Single IntersectionObserver — the only source of truth for active section.
+  const activeSection = useActiveSection(SECTION_IDS);
+
   return (
     <div className="min-h-screen bg-background">
-      <Navbar overlay />
-      <FloatingSidebar />
+      <Navbar overlay activeSection={activeSection} />
+      <FloatingSidebar activeSection={activeSection} />
+      <SectionDotNav sectionIds={SECTION_IDS} activeSection={activeSection} />
 
       {/* HERO */}
-      <section className="relative h-[100vh] min-h-[680px] w-full overflow-hidden">
+      <section id="hero" className="relative h-[100vh] min-h-[680px] w-full overflow-hidden">
         <AnimatePresence mode="sync">
           <motion.img
             key={tab}

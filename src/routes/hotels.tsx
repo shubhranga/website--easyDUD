@@ -3,7 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import { PageTransition } from "@/components/PageTransition";
 import { SearchHero } from "@/components/hotels/SearchHero";
 import { PopularDestinations } from "@/components/hotels/PopularDestinations";
 import { FilterSidebar, type Filters } from "@/components/hotels/FilterSidebar";
@@ -15,13 +14,13 @@ import { HOTELS, type Hotel } from "@/lib/hotels-data";
 export const Route = createFileRoute("/hotels")({
   head: () => ({
     meta: [
-      { title: "Hotels — DUD Travel" },
+      { title: "Hotels — easyDUD" },
       {
         name: "description",
         content:
-          "Discover and book hand-picked hotels across 200+ destinations with flexible cancellation on DUD Travel.",
+          "Discover and book hand-picked hotels across 200+ destinations with flexible cancellation on easyDUD.",
       },
-      { property: "og:title", content: "Hotels — DUD Travel" },
+      { property: "og:title", content: "Hotels — easyDUD" },
       {
         property: "og:description",
         content: "Discover and book hand-picked hotels across 200+ destinations.",
@@ -70,11 +69,9 @@ function HotelsPage() {
   };
 
   return (
-    <PageTransition>
     <div style={{ minHeight: "100vh", background: "#fafbfc", fontFamily: "'DM Sans', sans-serif" }}>
       <style>{`
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
       `}</style>
       <Navbar />
 
@@ -249,6 +246,5 @@ function HotelsPage() {
         }
       `}</style>
     </div>
-    </PageTransition>
   );
 }

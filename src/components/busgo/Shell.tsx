@@ -39,7 +39,7 @@ export function BusGoNav() {
               {n.label}
             </Link>
           ))}
-          <Link to="/" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900">← DUD Travel</Link>
+          <Link to="/" className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900">← easyDUD</Link>
         </nav>
         <div className="hidden md:flex items-center gap-2">
           {session ? (
@@ -66,7 +66,7 @@ export function BusGoNav() {
           ) : (
             <Link to="/bus/login" onClick={() => setOpen(false)} className="block py-2 text-[#D84040] font-medium">Login</Link>
           )}
-          <Link to="/" onClick={() => setOpen(false)} className="block py-2 text-gray-500">← DUD Travel</Link>
+          <Link to="/" onClick={() => setOpen(false)} className="block py-2 text-gray-500">← easyDUD</Link>
         </div>
       )}
     </header>

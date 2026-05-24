@@ -125,9 +125,9 @@ export function FilterSidebar({
             color: "#64748b",
           }}
         >
-          <span>$50</span>
-          <span style={{ color: "#0f172a", fontWeight: 600 }}>Up to ${filters.maxPrice}</span>
-          <span>$500</span>
+          <span>₹50</span>
+          <span style={{ color: "#0f172a", fontWeight: 600 }}>Up to ₹{filters.maxPrice}</span>
+          <span>₹500</span>
         </div>
       </Section>
 

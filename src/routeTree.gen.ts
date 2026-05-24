@@ -19,6 +19,7 @@ import { Route as CabRouteImport } from './routes/cab'
 import { Route as BusRouteImport } from './routes/bus'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BikePoolingRouteImport } from './routes/bike-pooling'
+import { Route as BikeRouteImport } from './routes/bike'
 import { Route as AutoRouteImport } from './routes/auto'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -79,6 +80,11 @@ const BikePoolingRoute = BikePoolingRouteImport.update({
   path: '/bike-pooling',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BikeRoute = BikeRouteImport.update({
+  id: '/bike',
+  path: '/bike',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AutoRoute = AutoRouteImport.update({
   id: '/auto',
   path: '/auto',
@@ -129,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auto': typeof AutoRoute
+  '/bike': typeof BikeRoute
   '/bike-pooling': typeof BikePoolingRoute
   '/blog': typeof BlogRoute
   '/bus': typeof BusRouteWithChildren
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auto': typeof AutoRoute
+  '/bike': typeof BikeRoute
   '/bike-pooling': typeof BikePoolingRoute
   '/blog': typeof BlogRoute
   '/bus': typeof BusRouteWithChildren
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auto': typeof AutoRoute
+  '/bike': typeof BikeRoute
   '/bike-pooling': typeof BikePoolingRoute
   '/blog': typeof BlogRoute
   '/bus': typeof BusRouteWithChildren
@@ -195,6 +204,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auto'
+    | '/bike'
     | '/bike-pooling'
     | '/blog'
     | '/bus'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auto'
+    | '/bike'
     | '/bike-pooling'
     | '/blog'
     | '/bus'
@@ -237,6 +248,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auto'
+    | '/bike'
     | '/bike-pooling'
     | '/blog'
     | '/bus'
@@ -259,6 +271,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AutoRoute: typeof AutoRoute
+  BikeRoute: typeof BikeRoute
   BikePoolingRoute: typeof BikePoolingRoute
   BlogRoute: typeof BlogRoute
   BusRoute: typeof BusRouteWithChildren
@@ -341,6 +354,13 @@ declare module '@tanstack/react-router' {
       path: '/bike-pooling'
       fullPath: '/bike-pooling'
       preLoaderRoute: typeof BikePoolingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bike': {
+      id: '/bike'
+      path: '/bike'
+      fullPath: '/bike'
+      preLoaderRoute: typeof BikeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auto': {
@@ -433,6 +453,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AutoRoute: AutoRoute,
+  BikeRoute: BikeRoute,
   BikePoolingRoute: BikePoolingRoute,
   BlogRoute: BlogRoute,
   BusRoute: BusRouteWithChildren,

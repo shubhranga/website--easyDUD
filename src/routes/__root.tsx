@@ -6,11 +6,10 @@ import {
   useRouter,
   HeadContent,
   Scripts,
-  useLocation,
 } from "@tanstack/react-router";
-import { AnimatePresence } from "framer-motion";
 
 import appCss from "../styles.css?url";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -74,11 +73,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "DUD Travel" },
-      { name: "description", content: "DUD Travel — smarter, seamless travel booking." },
+      { title: "easyDUD" },
+      { name: "description", content: "easyDUD — smarter, seamless travel booking." },
       { name: "author", content: "DUD" },
-      { property: "og:title", content: "DUD Travel" },
-      { property: "og:description", content: "DUD Travel — smarter, seamless travel booking." },
+      { property: "og:title", content: "easyDUD" },
+      { property: "og:description", content: "easyDUD — smarter, seamless travel booking." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -110,25 +109,13 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-/**
- * AnimatedOutlet keys AnimatePresence on the pathname so the outgoing
- * page plays its exit animation before the incoming page enters.
- */
-function AnimatedOutlet() {
-  const { pathname } = useLocation();
-  return (
-    <AnimatePresence mode="wait" initial={false}>
-      <Outlet key={pathname} />
-    </AnimatePresence>
-  );
-}
-
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AnimatedOutlet />
+      <Outlet />
+      <Toaster richColors position="top-right" />
     </QueryClientProvider>
   );
 }

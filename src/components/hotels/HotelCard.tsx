@@ -167,7 +167,7 @@ export function HotelCard({ hotel, onView }: { hotel: Hotel; onView?: (h: Hotel)
                 color: "#0f172a",
               }}
             >
-              ${hotel.price}
+              ₹{hotel.price}
               <span style={{ fontSize: 12, color: "#64748b", fontFamily: "'DM Sans',sans-serif" }}>
                 {" "}
                 / night
