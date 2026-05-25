@@ -2,6 +2,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import ceoImg from "@/assets/ceo.jpg";
+import executiveDirectorImg from "@/assets/executiveDirector.jpg";
+import cfoImg from "@/assets/CFO.jpg";
+import emImg from "@/assets/EM.jpg";
+import bdmImg from "@/assets/BDM.jpg";
+import crmImg from "@/assets/CRM.jpg";
+import dikshaImg from "@/assets/Diksha.jpg";
+import designer1Img from "@/assets/designer1.jpg";
+import designer2Img from "@/assets/designer 2.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,42 +26,42 @@ const TEAM = [
   { 
     name: "Shekhar Pratap Singh Raghav", 
     role: "Founder, MD & CEO", 
-    img: "/team/ceo.jpg" 
+    img: ceoImg 
   },
   { 
     name: "Sanjeev Sharma", 
     role: "Executive Director", 
-    img: "/team/executiveDirector.jpg" 
+    img: executiveDirectorImg 
   },
   { 
     name: "Chetan", 
     role: "Executive Co-Founder & Marketing", 
-    img: "/team/CFO.jpg" 
+    img: cfoImg 
   },
   { 
     name: "Rohit Srivastava", 
     role: "Executive Manager", 
-    img: "/team/EM.jpg" 
+    img: emImg 
   },
   { 
     name: "Suraj", 
     role: "Business Development Manager", 
-    img: "/team/BDM.jpg" 
+    img: bdmImg 
   },
   { 
     name: "Tanya", 
     role: "Company Relationshiop Manager", 
-    img: "/team/CRM.jpg" 
+    img: crmImg 
   },
   { 
     name: "Diksha Kholiya", 
     role: "Company Process Manager & Admin", 
-    img: "/team/Diksha.jpg" 
+    img: dikshaImg 
   },
   { 
     name: "Shivansh Yadav & Lalit Kaira", 
     role: "Management of Designing Development & Editing", 
-    img: ["/team/designer 2.jpg", "/team/designer1.jpg"] 
+    img: [designer2Img, designer1Img] 
   }
 ];
 
