@@ -17,42 +17,42 @@ const TEAM = [
   { 
     name: "Shekhar Pratap Singh Raghav", 
     role: "Founder, MD & CEO", 
-    img: "/src/assets/ceo.jpg" 
+    img: "/team/ceo.jpg" 
   },
   { 
     name: "Sanjeev Sharma", 
     role: "Executive Director", 
-    img: "/src/assets/executiveDirector.jpg" 
+    img: "/team/executiveDirector.jpg" 
   },
   { 
     name: "Chetan", 
     role: "Executive Co-Founder & Marketing", 
-    img: "/src/assets/CFO.jpg" 
+    img: "/team/CFO.jpg" 
   },
   { 
     name: "Rohit Srivastava", 
     role: "Executive Manager", 
-    img: "/src/assets/EM.jpg" 
+    img: "/team/EM.jpg" 
   },
   { 
     name: "Suraj", 
     role: "Business Development Manager", 
-    img: "/src/assets/BDM.jpg" 
+    img: "/team/BDM.jpg" 
   },
   { 
     name: "Tanya", 
     role: "Company Relationshiop Manager", 
-    img: "/src/assets/CRM.jpg" 
+    img: "/team/CRM.jpg" 
   },
   { 
     name: "Diksha Kholiya", 
     role: "Company Process Manager & Admin", 
-    img: "/src/assets/Diksha.jpg" 
+    img: "/team/Diksha.jpg" 
   },
   { 
     name: "Shivansh Yadav & Lalit Kaira", 
     role: "Management of Designing Development & Editing", 
-    img: ["/src/assets/designer 2.jpg", "/src/assets/designer1.jpg"] 
+    img: ["/team/designer 2.jpg", "/team/designer1.jpg"] 
   }
 ];
 
